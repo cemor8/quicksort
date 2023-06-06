@@ -1,7 +1,14 @@
 "use strict";
-
-
 const lista_original = [-7,4,6,9,12,56,9,3,222,-11];
+/**
+ * Funcion que recibe una lista de numeros y la ordena siguiendo el
+ * algoritmo quicksor. Primero encuentra un pivote para ordenar segun el,
+ * luego añade los numeros a la lista de menores si es menor o igual que el pivote y a la de
+ * mayores si es mayor que el pivote, los menores y los mayores se le envian a divideLista , luego compruebo que la lista
+ * de mayores y menores tenga la misma cantidad de numeros que la original, si no devuelvo la lista
+ * @param {[Number]} lista lista de numeros a ordenar
+ * @returns 
+ */
 function quickSort(lista) {
 
 
@@ -22,9 +29,6 @@ function quickSort(lista) {
     }
     menores=divideLista(menores);
     mayores=divideLista(mayores);
-
-    console.log(pivote)
-    console.log(menores," menores", mayores, " mayores")
     menores.push(pivotes)
     
     let lista_final=menores.concat(mayores);
@@ -36,7 +40,11 @@ function quickSort(lista) {
     
 }
 
-
+/**
+ * Funcion que calcula el pivote de una lista
+ * @param {[Number]} lista lista de numeros
+ * @returns 
+ */
 function calculapivote(lista){
     let posicion1 = 0;
     let posicion2 = Math.round(lista.length / 2);
@@ -56,7 +64,12 @@ function calculapivote(lista){
     }
     return pivote_posicion;
 }
-
+/**
+ * Funcion que comprueba si la lista tiene mas de 2 elementos, si los tiene llama a la funcion quicksort con la lista, si no comprueba que tenga 2 elementos,
+ * si tiene dos pone el menor por delante del mayor, si no tiene dos elementos, devuelve la lista
+ * @param {[Number]} lista lista de numeros
+ * @returns 
+ */
 function divideLista(lista){
     if(lista.length>2){
         return quickSort(lista);
